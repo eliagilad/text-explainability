@@ -1,3 +1,5 @@
 external_repos/
 results/
 src/models/
+notebooks/drafts/
+notebooks/.ipynb_checkpoints/
