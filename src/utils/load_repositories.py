@@ -6,7 +6,7 @@ external_repos_path = '../external_repos/'
 
 # List the repositories you want to include
 repos = [
-    'eraserbenchmark-master/rationale_benchmark',
+    'eraserbenchmark-master',
 ]
 
 # Add each repository to sys.path

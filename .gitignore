@@ -3,3 +3,6 @@ results/
 src/models/
 notebooks/drafts/
 notebooks/.ipynb_checkpoints/
+debug/
+datasets/
+output/
