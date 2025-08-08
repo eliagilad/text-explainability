@@ -3,4 +3,6 @@ pytorch-transformers==1.2.0
 scipy==1.13.0
 scikit-learn==1.4.2
 shap==0.46.0
-torch==2.4.1
+torch==2.7.1
+transformers==4.54.1
+
