@@ -4,14 +4,28 @@ from transformers import BertForSequenceClassification, BertTokenizer
 import json
 import os
 import traceback
+import pandas as pd
+
+#structure_file = "../results/runtime_analysis3.json"
+add = False
+structure_file = "../results/runtime_analysis4.json"
+
+sst_sub_file = "../datasets/sst2_sampled_with_tokens.csv"
+df_sst = pd.read_csv(sst_sub_file)
+# short_sentences = ["Very, boring, film, terrible",
+#                    "Bad film terrible and very boring."]
+
+#setences = list(df_sst['sentence'])
 
 short_sentences = ["Absolutely terrible.",
-                   "This movie was terrible .",
-                   "The acting was dull and boring .",
-                   "The plot was weak and the acting terrible .",
-                   "This film was boring and slow with a predictable ending .",
-                   "The movie was slow, the dialogue wooden, and the ending predictable .",
-                   ]
+                   "This movie was terrible.",
+                   "The acting was dull and boring.",
+                   "The plot was weak and the acting terrible.",
+                   "This film was boring and slow with a predictable ending.",
+                   "The movie was slow, the dialogue wooden, and the ending predictable.",
+                   "The characters were flat, the dialogue awkward, and the pacing unbearably slow throughout the film .",
+                    "I found the acting unconvincing, the story predictable, and the constant overuse of clichés made the entire film tedious .",
+                   "The film dragged on far too long, with weak performances, a predictable script, and no real emotional weight to keep me engaged ."]
 #longer_text = "The acting was wooden, and the plot was painfully predictable."
 model_dir = "../src/models/bert_IMDB"
 # config_class = BertConfig
@@ -24,7 +38,10 @@ model = model_class.from_pretrained(model_dir)
 tokenizer = tokenizer_class.from_pretrained(model_dir)
 
 
-for short_sentence in short_sentences:
+#for short_sentence in short_sentences:
+for i, row in df_sst.iterrows():
+    short_sentence = row["sentence"]
+
     pred = transformers.pipeline(
         "text-classification",
         model=model,
@@ -39,8 +56,8 @@ for short_sentence in short_sentences:
 
     def counting_forward(*args, **kwargs):
         global forward_count
-        forward_count += 1
-        print(f"\n=== model.forward call #{forward_count} ===")
+        forward_count += len(kwargs['input_ids'])
+        #print(f"\n=== model.forward call #{forward_count} ===")
         # traceback.print_stack(limit=15)
         return original_forward(*args, **kwargs)
 
@@ -50,8 +67,8 @@ for short_sentence in short_sentences:
     # Now use with SHAP
     explainer = shap.Explainer(pred)
 
-    results.append({'tokens': [], 'PartitionExplainer': {}})
-    shap_values = explainer([short_sentence])
+    results.append({'tokens': [], 'num_tokens': row["num_tokens"], 'PartitionExplainer': {}})
+    shap_values = explainer([short_sentence], max_evals=6000)
 
     print(f"Model forward passes during SHAP: {forward_count}")
     results[text_num]['tokens'] = list(shap_values.data[0])
@@ -62,10 +79,24 @@ for short_sentence in short_sentences:
     pred.model.forward = original_forward
     text_num += 1
 
-structure_file = "../results/runtime_analysis.json"
+if add:
+    # Load existing results if the file exists
+    if os.path.exists(structure_file):
+        with open(structure_file, "r") as f:
+            existing_results = json.load(f)
+    else:
+        existing_results = []
 
-with open(structure_file, 'w') as f:
-    json.dump(results, f, indent=2)
+    # Append the new results
+    existing_results.extend(results)  # `results` is your new array
 
-json.dumps(results, indent=2)
+    # Save back to file
+    with open(structure_file, "w") as f:
+        json.dump(existing_results, f, indent=2)
+else:
+    with open(structure_file, 'w') as f:
+        json.dump(results, f, indent=2)
+
+    json.dumps(results, indent=2)
+
 print()

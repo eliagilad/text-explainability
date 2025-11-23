@@ -88,7 +88,7 @@ results[text_num]['PartitionExplainer']['feature_importance'] = list(shap_values
 # Restore original if needed
 pred.model.forward = original_forward
 
-structure_file = "../results/runtime_analysis.json"
+structure_file = "../results/runtime_analysis3.json"
 
 with open(structure_file, 'w') as f:
     json.dump(results, f, indent=2)
