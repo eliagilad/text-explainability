@@ -4,6 +4,8 @@ import pandas as pd
 import torch
 from transformers import BertForSequenceClassification, BertTokenizer
 
+should_save = False
+aopc_file = "../../results/aopc.json"
 
 def aopc(feature_importance_scores, tokens, prediction_func, mask_value):
     full_prediction = prediction_func(tokens)
@@ -151,6 +153,7 @@ for i, row in df_sst.iterrows():
         break
 
     text = row["sentence"]
+    print(text)
     fi_partition = fi_row["PartitionExplainer"]["feature_importance"]
     fi_hedge = fi_row["HEDGE"]["feature_importance"]
 
@@ -169,12 +172,18 @@ for i, row in df_sst.iterrows():
         fi_hedge
     )
 
-    aopcs.append({"aopc_partition": aopc_score_partition,
-                  "aopc_hedge": aopc_score_hedge})
-    aopc_file = "../../results/aopc.json"
+    print(f"aopc score partition: {aopc_score_partition}")
+    print(f"aopc score hedge: {aopc_score_partition}")
 
-    with open(aopc_file, 'w') as f:
-        json.dump(aopcs, f, indent=2)
+    aopcs.append({"text": text,
+                 "tokens": fi_row["tokens"],
+                    "num_tokens": fi_row["num_tokens"],
+                    "aopc_partition": aopc_score_partition,
+                  "aopc_hedge": aopc_score_hedge})
+
+    if should_save:
+        with open(aopc_file, 'w') as f:
+            json.dump(aopcs, f, indent=2)
 
 # print(f"AOPC Score: {aopc_score:.4f}")
 # print("\nInterpretation:")

@@ -2,12 +2,13 @@ import shap
 import transformers
 from transformers import BertForSequenceClassification, BertTokenizer
 import json
+import numpy as np
 import os
-import traceback
 import pandas as pd
 
 #structure_file = "../results/runtime_analysis3.json"
 add = False
+override_existing = True
 structure_file = "../results/runtime_analysis4.json"
 
 sst_sub_file = "../datasets/sst2_sampled_with_tokens.csv"
@@ -69,28 +70,45 @@ for i, row in df_sst.iterrows():
 
     results.append({'tokens': [], 'num_tokens': row["num_tokens"], 'PartitionExplainer': {}})
     shap_values = explainer([short_sentence], max_evals=6000)
+    predicted_class = np.argmax(np.sum(shap_values.values[0], axis=0))
 
     print(f"Model forward passes during SHAP: {forward_count}")
     results[text_num]['tokens'] = list(shap_values.data[0])
     results[text_num]['PartitionExplainer']['prediction_calls'] = forward_count
-    results[text_num]['PartitionExplainer']['feature_importance'] = list(shap_values.values[:, :, 0][0])
+    results[text_num]['PartitionExplainer']['feature_importance'] = list(shap_values.values[:, :, predicted_class][0])
 
     # Restore original if needed
     pred.model.forward = original_forward
     text_num += 1
 
-if add:
-    # Load existing results if the file exists
+
+
+ # Load existing results if the file exists
+def get_exiting(structure_file):
     if os.path.exists(structure_file):
         with open(structure_file, "r") as f:
             existing_results = json.load(f)
     else:
         existing_results = []
 
+    return existing_results
+
+if add:
+    existing_results = get_exiting(structure_file)
+
     # Append the new results
     existing_results.extend(results)  # `results` is your new array
 
     # Save back to file
+    with open(structure_file, "w") as f:
+        json.dump(existing_results, f, indent=2)
+elif override_existing:
+    existing_results = get_exiting(structure_file)
+
+    for i in range(len(results)):
+        partition_result = results[i]["PartitionExplainer"]
+        existing_results[i]['PartitionExplainer'] = partition_result
+
     with open(structure_file, "w") as f:
         json.dump(existing_results, f, indent=2)
 else:
