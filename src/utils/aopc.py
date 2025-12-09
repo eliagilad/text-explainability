@@ -4,17 +4,20 @@ import pandas as pd
 import torch
 from transformers import BertForSequenceClassification, BertTokenizer
 
-should_save = False
+should_save = True
 aopc_file = "../../results/aopc.json"
 
 def aopc(feature_importance_scores, tokens, prediction_func, mask_value):
     full_prediction = prediction_func(tokens)
     fp_max, fp_max_ind = np.max(full_prediction), np.argmax(full_prediction)
-    n_features = len(feature_importance_scores)
+    sub_fi_scores = feature_importance_scores[1:len(feature_importance_scores)-1]
+    n_features = len(sub_fi_scores)
 
     # Features indices highest to lowest
-    sorted_indices = np.argsort(feature_importance_scores)[::-1]
+    sorted_indices = np.argsort(sub_fi_scores)[::-1]
+    sorted_indices += 1
     sum_diff = 0
+    print(f"Prediction: {fp_max}, class {fp_max_ind}")
 
     for k in range(1, n_features + 1):
         modified_input = tokens.copy()
@@ -23,9 +26,11 @@ def aopc(feature_importance_scores, tokens, prediction_func, mask_value):
         k_prediction = prediction_func(modified_input)
         k_prediction = k_prediction[fp_max_ind]
         sum_diff += (fp_max - k_prediction)
+        print(f"{k}. diff {(fp_max - k_prediction)}")
 
     aopc = sum_diff / n_features
-    return aopc
+    print(f"aopc: {aopc}")
+    return aopc, fp_max, fp_max_ind
 
 def bert_aopc(model, tokenizer, text, feature_importance_scores):
     inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True)
@@ -52,17 +57,18 @@ def bert_aopc(model, tokenizer, text, feature_importance_scores):
         return probabilities[0].cpu().numpy()
 
     # Calculate AOPC
+    print(text)
     mask_token_id = tokenizer.mask_token_id
     tokens_numpy = input_ids.cpu().numpy()
 
-    aopc_score = aopc(
+    aopc_score, fp_max, fp_max_ind = aopc(
         feature_importance_scores,
         tokens_numpy,
         prediction_func,
         mask_token_id
     )
 
-    return aopc_score
+    return aopc_score, fp_max, fp_max_ind
 
 def get_tokens_and_text(tokenizer, text):
     """Helper function to see the actual tokens."""
@@ -146,10 +152,11 @@ aopcs = []
 for i, row in df_sst.iterrows():
     fi_row = fi_file[i]
 
-    if fi_row["num_tokens"] % 3 > 0:
+    #if fi_row["num_tokens"] % 3 > 0:
+    if fi_row["num_tokens"] < 3:
         continue
 
-    if fi_row["num_tokens"] > 18:
+    if fi_row["num_tokens"] > 19:
         break
 
     text = row["sentence"]
@@ -158,14 +165,14 @@ for i, row in df_sst.iterrows():
     fi_hedge = fi_row["HEDGE"]["feature_importance"]
 
     # Calculate AOPC
-    aopc_score_partition = bert_aopc(
+    aopc_score_partition, fp_max, fp_max_ind = bert_aopc(
         model,
         tokenizer,
         text,
         fi_partition
     )
 
-    aopc_score_hedge = bert_aopc(
+    aopc_score_hedge, fp_max, fp_max_ind = bert_aopc(
         model,
         tokenizer,
         text,
@@ -177,6 +184,8 @@ for i, row in df_sst.iterrows():
 
     aopcs.append({"text": text,
                  "tokens": fi_row["tokens"],
+                  "prediction_class": int(fp_max_ind),
+                  "prediction_confidence": float(fp_max),
                     "num_tokens": fi_row["num_tokens"],
                     "aopc_partition": aopc_score_partition,
                   "aopc_hedge": aopc_score_hedge})
