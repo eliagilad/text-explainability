@@ -13,8 +13,12 @@ class BertModel:
         self.tokenizer = tokenizer_class.from_pretrained(model_dir, model_max_length=512)
         self.mask_token_id = self.tokenizer.mask_token_id
 
-    def predict(self, text, padded=False):
+    def get_tokens(self, text):
         inputs = self.tokenizer(text, return_tensors="pt", padding=True, truncation=True)
+        return inputs
+
+    def predict(self, text, padded=False):
+        inputs = self.get_tokens(text)
         input_ids = inputs['input_ids'][0]  # Remove batch dimension
         attention_mask = inputs['attention_mask'][0].unsqueeze(0)
         token_ids = input_ids.cpu().numpy()
@@ -42,6 +46,3 @@ class BertModel:
             "probabilities": probabilities[0].cpu().numpy(),
             "prediction_time": end_time - start_time
         }
-
-    def prediction_time(self, text, padded=False):
-        self.predict(text, padded)
