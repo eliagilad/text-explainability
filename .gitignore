@@ -6,3 +6,9 @@ notebooks/.ipynb_checkpoints/
 debug/
 datasets/
 output/
+venv/
+.idea/
+.vscode/
+.DS_Store
+.venv/
+.env
