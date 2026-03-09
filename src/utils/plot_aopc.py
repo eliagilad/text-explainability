@@ -105,10 +105,65 @@ def plot_aopc_by_confidence(df, explainer="aopc_partition"):
 
     plt.show()
 
+
+def plot_aopc_by_confidence_combined(df, explainer1="aopc_partition", explainer2="aopc_integrated"):
+    df['confidence_level'] = pd.cut(df['prediction_confidence'],
+                                    bins=[0.5, 0.8, 0.95, 0.99, 0.999, 1.0])
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+    classes = ["Negative", "Positive"]
+    colors = ['C0', 'C1']
+
+    explainers = [explainer1, explainer2]
+    linestyles = ['-', '--']
+
+    # Store line objects for legend
+    lines = []
+    labels = []
+
+    # Plot each explainer
+    for exp_idx, explainer in enumerate(explainers):
+        # Plot each class separately
+        for class_idx, class_label in enumerate(df['prediction_class'].unique()):
+            class_data = df[df['prediction_class'] == class_label]
+
+            grouped_mean = class_data.groupby('confidence_level')[explainer].mean()
+            grouped_count = class_data.groupby('confidence_level').size()
+
+            x_values = [interval.mid for interval in grouped_mean.index]
+
+            line, = ax.plot(x_values, grouped_mean.values, marker='o',
+                            linewidth=2, linestyle=linestyles[exp_idx],
+                            color=colors[class_idx])
+
+            lines.append(line)
+            labels.append(f'{classes[class_label]} - {explainer.split("_")[1]}')
+
+            if exp_idx == 0:
+                for x, y, count in zip(x_values, grouped_mean.values, grouped_count.values):
+                    ax.annotate(f'n={count}', xy=(x, y), xytext=(5, 5),
+                                textcoords='offset points', fontsize=8, alpha=0.7)
+
+    ax.set_xlabel('Confidence Level')
+    ax.set_ylabel('AOPC Score')
+    ax.set_title('AOPC by Prediction Confidence (by Class) - Comparison')
+
+    # Enlarge the legend line samples
+    ax.legend(lines, labels, loc='best', handlelength=4, handleheight=2)
+
+    ax.grid(True, alpha=0.3)
+    plt.tight_layout()
+
+    plot_file = f"../../results/compare_aopc_by_conf_combined.png"
+    fig.savefig(plot_file, dpi=300)
+
+    plt.show()
+
 # plot_aopc_scatter(df)
 # plot_aopc_mean(df)
 # plot_aopc_std(df)
 #plot_aopc_by_confidence(df)
-plot_aopc_by_confidence(df, explainer="aopc_partition")
-plot_aopc_by_confidence(df, explainer="aopc_hedge")
+#plot_aopc_by_confidence(df, explainer="aopc_partition")
+#plot_aopc_by_confidence(df, explainer="aopc_hedge")
 
+plot_aopc_by_confidence_combined(df, "aopc_partition", "aopc_hedge")

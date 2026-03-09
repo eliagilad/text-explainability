@@ -1,10 +1,11 @@
 #import shap
 import math
 import numpy as np
+import random
 import re
 from shap.maskers import Text
 
-class BalancedTextMasker(Text):
+class RandomTextMasker(Text):
     def clustering(self, s):
         """Compute the clustering of tokens for the given string."""
         self._update_s_cache(s)
@@ -26,7 +27,7 @@ class BalancedTextMasker(Text):
             else:
                 tokens.append(v.strip())
 
-        pt = balanced_partition(tokens, special_tokens)
+        pt = random_partition(tokens, special_tokens)
 
         # use the rescaled size of the clusters as their height since the merge scores are just a
         # heuristic and not scaled well
@@ -69,6 +70,10 @@ def merge_score(group1, group2, special_tokens):
     special_tokens: tokens (such as separator tokens) that should be grouped last
     """
     score = 0
+
+    # 
+    score -= random.random()
+
     # ensures special tokens are combined last, so 1st subtree is 1st sentence and 2nd subtree is 2nd sentence
 
     # Remove every score logic that isn't balance
@@ -124,7 +129,8 @@ def merge_score(group1, group2, special_tokens):
     #     else:
     #         score -= 1
 
-    score -= len(group1) + len(group2)
+    # Remove the balance logic that isn't random
+    #score -= len(group1) + len(group2)
     #print(group1, group2, score)
     return score
 
@@ -142,7 +148,7 @@ def merge_closest_groups(groups, special_tokens):
 
     groups.pop(ind+1)
 
-def balanced_partition(decoded_tokens, special_tokens):
+def random_partition(decoded_tokens, special_tokens):
     """Build a heriarchial clustering of tokens that align with sentence structure.
 
     Note that this is fast and heuristic right now.

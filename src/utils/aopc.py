@@ -4,8 +4,11 @@ import pandas as pd
 import torch
 from transformers import BertForSequenceClassification, BertTokenizer
 
+import os
+
+
 should_save = True
-aopc_file = "../../results/aopc.json"
+aopc_file = "results/aopc.json"
 
 def aopc(feature_importance_scores, tokens, prediction_func, mask_value):
     full_prediction = prediction_func(tokens)
@@ -97,12 +100,12 @@ def generic_aopc_example():
 
 
 # Load model
-model_dir = "../models/bert_IMDB"
+model_dir = "src/models/bert_IMDB"
 # config_class = BertConfig
 model_class = BertForSequenceClassification
 tokenizer_class = BertTokenizer
 
-
+print("CWD:", os.getcwd())
 model = model_class.from_pretrained(model_dir)
 tokenizer = tokenizer_class.from_pretrained(model_dir)
 
@@ -139,60 +142,64 @@ model.eval()
 #     0.05,  # !
 #     0.1  # [SEP]
 # ])
+def texts_aopc():
+    sst_sub_file = "../../datasets/sst2_sampled_with_tokens.csv"
+    df_sst = pd.read_csv(sst_sub_file)
 
-sst_sub_file = "../../datasets/sst2_sampled_with_tokens.csv"
-df_sst = pd.read_csv(sst_sub_file)
+    results_file = "../../results/runtime_analysis4.json"
+    with open(results_file, "r") as f:
+        fi_file = json.load(f)
 
-results_file = "../../results/runtime_analysis4.json"
-with open(results_file, "r") as f:
-    fi_file = json.load(f)
+    aopcs = []
 
-aopcs = []
+    for i, row in df_sst.iterrows():
+        fi_row = fi_file[i]
 
-for i, row in df_sst.iterrows():
-    fi_row = fi_file[i]
+        #if fi_row["num_tokens"] % 3 > 0:
+        if fi_row["num_tokens"] < 3:
+            continue
 
-    #if fi_row["num_tokens"] % 3 > 0:
-    if fi_row["num_tokens"] < 3:
-        continue
+        if fi_row["num_tokens"] > 19:
+            break
 
-    if fi_row["num_tokens"] > 19:
-        break
+        text = row["sentence"]
+        print(text)
+        fi_partition = fi_row["PartitionExplainer"]["feature_importance"]
+        fi_hedge = fi_row["HEDGE"]["feature_importance"]
 
-    text = row["sentence"]
-    print(text)
-    fi_partition = fi_row["PartitionExplainer"]["feature_importance"]
-    fi_hedge = fi_row["HEDGE"]["feature_importance"]
+        # Calculate AOPC
+        aopc_score_partition, fp_max, fp_max_ind = bert_aopc(
+            model,
+            tokenizer,
+            text,
+            fi_partition
+        )
 
-    # Calculate AOPC
-    aopc_score_partition, fp_max, fp_max_ind = bert_aopc(
-        model,
-        tokenizer,
-        text,
-        fi_partition
-    )
+        aopc_score_hedge, fp_max, fp_max_ind = bert_aopc(
+            model,
+            tokenizer,
+            text,
+            fi_hedge
+        )
 
-    aopc_score_hedge, fp_max, fp_max_ind = bert_aopc(
-        model,
-        tokenizer,
-        text,
-        fi_hedge
-    )
+        print(f"aopc score partition: {aopc_score_partition}")
+        print(f"aopc score hedge: {aopc_score_partition}")
 
-    print(f"aopc score partition: {aopc_score_partition}")
-    print(f"aopc score hedge: {aopc_score_partition}")
+        aopcs.append({"text": text,
+                     "tokens": fi_row["tokens"],
+                      "prediction_class": int(fp_max_ind),
+                      "prediction_confidence": float(fp_max),
+                        "num_tokens": fi_row["num_tokens"],
+                        "aopc_partition": aopc_score_partition,
+                      "aopc_hedge": aopc_score_hedge})
 
-    aopcs.append({"text": text,
-                 "tokens": fi_row["tokens"],
-                  "prediction_class": int(fp_max_ind),
-                  "prediction_confidence": float(fp_max),
-                    "num_tokens": fi_row["num_tokens"],
-                    "aopc_partition": aopc_score_partition,
-                  "aopc_hedge": aopc_score_hedge})
+        if should_save:
+            with open(aopc_file, 'w') as f:
+                json.dump(aopcs, f, indent=2)
 
-    if should_save:
-        with open(aopc_file, 'w') as f:
-            json.dump(aopcs, f, indent=2)
+def fi_aopc(model, tokenizer, text, feature_importance_score):
+    aopc_score, fp_max, fp_max_ind = bert_aopc(model, tokenizer, text, feature_importance_score)
+    return aopc_score
 
 # print(f"AOPC Score: {aopc_score:.4f}")
 # print("\nInterpretation:")

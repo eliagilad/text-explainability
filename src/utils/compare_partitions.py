@@ -7,17 +7,26 @@ import transformers
 from transformers import BertForSequenceClassification, BertTokenizer
 
 from partitions.balanced_partition import BalancedTextMasker
+from partitions.random_partition import RandomTextMasker
 import aopc
 
-sst_sub_file = "../../datasets/sst2_sampled_with_tokens.csv"
-df_sst = pd.read_csv(sst_sub_file)
-df_sst = df_sst[df_sst["num_tokens"] >= 30]
+add_to_existing = True
 
-positive_example = "i have always appreciated a smartly written motion picture , and , whatever flaws igby goes down may possess , it is undeniably that . "
-negative_example = "is without doubt an artist of uncompromising vision , but that vision is beginning to feel , if not morally bankrupt , at least terribly monotonous "
+
+
+root_dir = "" #"../../"
+sst_sub_file = f"{root_dir}datasets/sst2_sampled_with_tokens.csv"
+df_sst = pd.read_csv(sst_sub_file)
+df_sst = df_sst[df_sst["num_tokens"] >= 20]
+
+if add_to_existing:
+    with open(f"{root_dir}results/partitions_aopc.json", "r") as f:
+        all_results = json.load(f)
+else:
+    all_results = []
 
 # Load model and tokenizer
-model_dir = "../models/bert_IMDB"
+model_dir = f"{root_dir}src/models/bert_IMDB"
 model_class = BertForSequenceClassification
 tokenizer_class = BertTokenizer
 model = model_class.from_pretrained(model_dir)
@@ -43,52 +52,68 @@ def get_fi(explainer, text, model, tokenizer):
     # Compute AOPC
     model.eval()
     model = model.to(device)
-    aopc_score, _, _ = aopc.bert_aopc(model, tokenizer, text, fi)
+    aopc_score, confidence, _ = aopc.bert_aopc(model, tokenizer, text, fi)
 
     model = model.to(device2)
-    return fi, predicted_class, aopc_score
+    return fi, predicted_class, aopc_score, confidence
 
-sample_size = 10
+sample_size = 100
 
-all_results = []
 aopc_default = []
 aopc_balanced = []
+
+ind = 0
 
 for i, row in df_sst.iterrows():
     if sample_size == 0:
         break
 
-    short_sentence = row["sentence"]
+    sentence = row["sentence"]
 
-    # Default explainer
-    explainer = shap.Explainer(pred)
+    if not add_to_existing:
+        # Default explainer
+        explainer = shap.Explainer(pred)
+        fi, predicted_class, aopc_score, confidence = get_fi(explainer, sentence, model, tokenizer)
+        aopc_default.append(aopc_score)
 
     # Balanced explainer
-    masker = BalancedTextMasker(tokenizer)
+    #masker = BalancedTextMasker(tokenizer)
+    masker = RandomTextMasker(tokenizer)
     explainer2 = shap.Explainer(pred, masker)
+    fi2, predicted_class2, aopc_score2, confidence2 = get_fi(explainer2, sentence, model, tokenizer)
+    aopc_balanced.append(aopc_score2)
 
     sample_size -= 1
 
-    fi, predicted_class, aopc_score = get_fi(explainer, positive_example, model, tokenizer)
-    fi2, predicted_class2, aopc_score2 = get_fi(explainer2, positive_example, model, tokenizer)
+    
 
-    aopc_default.append(aopc_score)
-    aopc_balanced.append(aopc_score2)
+    if add_to_existing:
+        all_results[ind]["random"] = {
+                        "fi": fi2,
+                        "aopc": aopc_score2
+                    }
+        
+    else:
+        results = { "text": sentence,
+                    "num_tokens": row["num_tokens"],
+                    "confidence": float(confidence),
+                    "predicted_class": int(predicted_class),
+                    "default": {
+                        "fi": fi,
+                        "aopc": aopc_score
+                    },
+                    "balanced": {
+                        "fi": fi2,
+                        "aopc": aopc_score2}
+                    }
+        
+        all_results.append(results)
 
-    results = { "text": positive_example,
-                "predicted_class": int(predicted_class),
-                "default": {
-                    "fi": fi,
-                    "aopc": aopc_score
-                },
-                "balanced": {
-                    "fi": fi2,
-                    "aopc": aopc_score2}
-                }
-    all_results.append(results)
+    ind += 1
+                    
 
 # Save results
-file = "../../results/partitions_aopc.json"
+file = f"{root_dir}results/partitions_aopc.json"
 with open(file, "w") as f:
     json.dump(all_results, f, indent=2)
 
