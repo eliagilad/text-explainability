@@ -1,0 +1,476 @@
+[2026-03-26 18:15:12] Start top-down tree, 4 features
+[2026-03-26 18:15:12] No GPU available.
+[2026-03-26 18:15:25] End level 1 - 13.692330121994019 seconds, 12 predictions
+[2026-03-26 18:15:25] No GPU available.
+[2026-03-26 18:15:26] End level 2 - 0.1570580005645752 seconds, 16 predictions
+[2026-03-26 18:15:26] No GPU available.
+[2026-03-26 18:15:26] End level 3 - 0.010724067687988281 seconds, 8 predictions
+[2026-03-26 18:15:26] No GPU available.
+[2026-03-26 18:15:26] Build tree time: 13.888366937637329
+[2026-03-26 18:15:37] Compute tree time: 24.835721015930176
+[2026-03-31 16:36:18] Start top-down tree, 6 features
+[2026-03-31 16:36:18] No GPU available.
+[2026-03-31 16:36:18] End level 1 - 0.2624812126159668 seconds, 20 predictions
+[2026-03-31 16:36:18] No GPU available.
+[2026-03-31 16:36:18] End level 2 - 0.27866601943969727 seconds, 32 predictions
+[2026-03-31 16:36:18] No GPU available.
+[2026-03-31 16:36:18] End level 3 - 0.18999719619750977 seconds, 48 predictions
+[2026-03-31 16:36:18] No GPU available.
+[2026-03-31 16:36:18] End level 4 - 0.03191709518432617 seconds, 32 predictions
+[2026-03-31 16:36:18] No GPU available.
+[2026-03-31 16:36:18] End level 5 - 0.015741825103759766 seconds, 16 predictions
+[2026-03-31 16:36:18] No GPU available.
+[2026-03-31 16:36:18] Build tree time: 0.8013722896575928
+[2026-03-31 16:36:19] Compute tree time: 1.0292370319366455
+[2026-03-31 17:31:36] Start top-down tree, 22 features
+[2026-03-31 17:31:36] No GPU available.
+[2026-03-31 17:31:36] End level 1 - 0.40869688987731934 seconds, 84 predictions
+[2026-03-31 17:31:36] No GPU available.
+[2026-03-31 17:31:36] End level 2 - 0.4748232364654541 seconds, 160 predictions
+[2026-03-31 17:31:36] No GPU available.
+[2026-03-31 17:31:37] End level 3 - 0.5872759819030762 seconds, 168 predictions
+[2026-03-31 17:31:37] No GPU available.
+[2026-03-31 17:31:38] End level 4 - 0.6500298976898193 seconds, 264 predictions
+[2026-03-31 17:31:38] No GPU available.
+[2026-03-31 17:31:38] End level 5 - 0.6605699062347412 seconds, 272 predictions
+[2026-03-31 17:31:38] No GPU available.
+[2026-03-31 17:31:39] End level 6 - 0.6031949520111084 seconds, 256 predictions
+[2026-03-31 17:31:39] No GPU available.
+[2026-03-31 17:31:39] End level 7 - 0.5476329326629639 seconds, 240 predictions
+[2026-03-31 17:31:39] No GPU available.
+[2026-03-31 17:31:40] End level 8 - 0.5553257465362549 seconds, 224 predictions
+[2026-03-31 17:31:40] No GPU available.
+[2026-03-31 17:31:40] End level 9 - 0.4677290916442871 seconds, 208 predictions
+[2026-03-31 17:31:40] No GPU available.
+[2026-03-31 17:31:41] End level 10 - 0.4233100414276123 seconds, 192 predictions
+[2026-03-31 17:31:41] No GPU available.
+[2026-03-31 17:31:41] End level 11 - 0.38457679748535156 seconds, 176 predictions
+[2026-03-31 17:31:41] No GPU available.
+[2026-03-31 17:31:42] End level 12 - 0.3491840362548828 seconds, 160 predictions
+[2026-03-31 17:31:42] No GPU available.
+[2026-03-31 17:31:42] End level 13 - 0.31427502632141113 seconds, 144 predictions
+[2026-03-31 17:31:42] No GPU available.
+[2026-03-31 17:31:42] End level 14 - 0.27681827545166016 seconds, 128 predictions
+[2026-03-31 17:31:42] No GPU available.
+[2026-03-31 17:31:42] End level 15 - 0.24123692512512207 seconds, 112 predictions
+[2026-03-31 17:31:42] No GPU available.
+[2026-03-31 17:31:43] End level 16 - 0.2074589729309082 seconds, 96 predictions
+[2026-03-31 17:31:43] No GPU available.
+[2026-03-31 17:31:43] End level 17 - 0.17443084716796875 seconds, 80 predictions
+[2026-03-31 17:31:43] No GPU available.
+[2026-03-31 17:31:43] End level 18 - 0.1378929615020752 seconds, 64 predictions
+[2026-03-31 17:31:43] No GPU available.
+[2026-03-31 17:31:43] End level 19 - 0.10408329963684082 seconds, 48 predictions
+[2026-03-31 17:31:43] No GPU available.
+[2026-03-31 17:31:43] End level 20 - 0.06930112838745117 seconds, 32 predictions
+[2026-03-31 17:31:43] No GPU available.
+[2026-03-31 17:31:43] End level 21 - 0.03493809700012207 seconds, 16 predictions
+[2026-03-31 17:31:43] No GPU available.
+[2026-03-31 17:31:43] Build tree time: 7.688320875167847
+[2026-03-31 17:31:46] Compute tree time: 10.690526008605957
+[2026-03-31 17:32:26] Start top-down tree, 22 features
+[2026-03-31 17:32:26] No GPU available.
+[2026-03-31 17:32:26] End level 1 - 0.273590087890625 seconds, 84 predictions
+[2026-03-31 17:32:26] No GPU available.
+[2026-03-31 17:32:26] End level 2 - 0.42797017097473145 seconds, 160 predictions
+[2026-03-31 17:32:26] No GPU available.
+[2026-03-31 17:32:27] End level 3 - 0.4050788879394531 seconds, 160 predictions
+[2026-03-31 17:32:27] No GPU available.
+[2026-03-31 17:32:27] End level 4 - 0.4002509117126465 seconds, 160 predictions
+[2026-03-31 17:32:27] No GPU available.
+[2026-03-31 17:32:28] End level 5 - 0.4547410011291504 seconds, 192 predictions
+[2026-03-31 17:32:28] No GPU available.
+[2026-03-31 17:32:28] End level 6 - 0.4132719039916992 seconds, 176 predictions
+[2026-03-31 17:32:28] No GPU available.
+[2026-03-31 17:32:28] End level 7 - 0.3749721050262451 seconds, 160 predictions
+[2026-03-31 17:32:28] No GPU available.
+[2026-03-31 17:32:29] End level 8 - 0.3660240173339844 seconds, 160 predictions
+[2026-03-31 17:32:29] No GPU available.
+[2026-03-31 17:32:29] End level 9 - 0.36176490783691406 seconds, 160 predictions
+[2026-03-31 17:32:29] No GPU available.
+[2026-03-31 17:32:29] End level 10 - 0.34176087379455566 seconds, 152 predictions
+[2026-03-31 17:32:29] No GPU available.
+[2026-03-31 17:32:30] End level 11 - 0.35320591926574707 seconds, 160 predictions
+[2026-03-31 17:32:30] No GPU available.
+[2026-03-31 17:32:30] End level 12 - 0.31698012351989746 seconds, 144 predictions
+[2026-03-31 17:32:30] No GPU available.
+[2026-03-31 17:32:30] End level 13 - 0.32651495933532715 seconds, 144 predictions
+[2026-03-31 17:32:30] No GPU available.
+[2026-03-31 17:32:31] End level 14 - 0.2799489498138428 seconds, 128 predictions
+[2026-03-31 17:32:31] No GPU available.
+[2026-03-31 17:32:31] End level 15 - 0.24399709701538086 seconds, 112 predictions
+[2026-03-31 17:32:31] No GPU available.
+[2026-03-31 17:32:31] End level 16 - 0.20829486846923828 seconds, 96 predictions
+[2026-03-31 17:32:31] No GPU available.
+[2026-03-31 17:32:31] End level 17 - 0.17479300498962402 seconds, 80 predictions
+[2026-03-31 17:32:31] No GPU available.
+[2026-03-31 17:32:31] End level 18 - 0.13773584365844727 seconds, 64 predictions
+[2026-03-31 17:32:31] No GPU available.
+[2026-03-31 17:32:32] End level 19 - 0.10332107543945312 seconds, 48 predictions
+[2026-03-31 17:32:32] No GPU available.
+[2026-03-31 17:32:32] End level 20 - 0.06917715072631836 seconds, 32 predictions
+[2026-03-31 17:32:32] No GPU available.
+[2026-03-31 17:32:32] End level 21 - 0.03522777557373047 seconds, 16 predictions
+[2026-03-31 17:32:32] No GPU available.
+[2026-03-31 17:32:32] Build tree time: 6.081883192062378
+[2026-03-31 17:32:35] Compute tree time: 9.11881971359253
+[2026-03-31 17:33:06] Start top-down tree, 22 features
+[2026-03-31 17:33:06] No GPU available.
+[2026-03-31 17:33:07] End level 1 - 0.2840850353240967 seconds, 84 predictions
+[2026-03-31 17:33:07] No GPU available.
+[2026-03-31 17:33:07] End level 2 - 0.4946482181549072 seconds, 160 predictions
+[2026-03-31 17:33:07] No GPU available.
+[2026-03-31 17:33:08] End level 3 - 0.4663670063018799 seconds, 184 predictions
+[2026-03-31 17:33:08] No GPU available.
+[2026-03-31 17:33:08] End level 4 - 0.47995901107788086 seconds, 200 predictions
+[2026-03-31 17:33:08] No GPU available.
+[2026-03-31 17:33:08] End level 5 - 0.4706900119781494 seconds, 200 predictions
+[2026-03-31 17:33:08] No GPU available.
+[2026-03-31 17:33:09] End level 6 - 0.42585301399230957 seconds, 184 predictions
+[2026-03-31 17:33:09] No GPU available.
+[2026-03-31 17:33:09] End level 7 - 0.4378800392150879 seconds, 192 predictions
+[2026-03-31 17:33:09] No GPU available.
+[2026-03-31 17:33:10] End level 8 - 0.40799903869628906 seconds, 176 predictions
+[2026-03-31 17:33:10] No GPU available.
+[2026-03-31 17:33:10] End level 9 - 0.36908912658691406 seconds, 160 predictions
+[2026-03-31 17:33:10] No GPU available.
+[2026-03-31 17:33:10] End level 10 - 0.3686678409576416 seconds, 160 predictions
+[2026-03-31 17:33:10] No GPU available.
+[2026-03-31 17:33:11] End level 11 - 0.32335782051086426 seconds, 144 predictions
+[2026-03-31 17:33:11] No GPU available.
+[2026-03-31 17:33:11] End level 12 - 0.33469510078430176 seconds, 152 predictions
+[2026-03-31 17:33:11] No GPU available.
+[2026-03-31 17:33:11] End level 13 - 0.30106496810913086 seconds, 136 predictions
+[2026-03-31 17:33:11] No GPU available.
+[2026-03-31 17:33:12] End level 14 - 0.26186513900756836 seconds, 120 predictions
+[2026-03-31 17:33:12] No GPU available.
+[2026-03-31 17:33:12] End level 15 - 0.2279059886932373 seconds, 104 predictions
+[2026-03-31 17:33:12] No GPU available.
+[2026-03-31 17:33:12] End level 16 - 0.20606327056884766 seconds, 96 predictions
+[2026-03-31 17:33:12] No GPU available.
+[2026-03-31 17:33:12] End level 17 - 0.17540621757507324 seconds, 80 predictions
+[2026-03-31 17:33:12] No GPU available.
+[2026-03-31 17:33:12] End level 18 - 0.13786578178405762 seconds, 64 predictions
+[2026-03-31 17:33:12] No GPU available.
+[2026-03-31 17:33:13] End level 19 - 0.10338783264160156 seconds, 48 predictions
+[2026-03-31 17:33:13] No GPU available.
+[2026-03-31 17:33:13] End level 20 - 0.06984186172485352 seconds, 32 predictions
+[2026-03-31 17:33:13] No GPU available.
+[2026-03-31 17:33:13] End level 21 - 0.03524184226989746 seconds, 16 predictions
+[2026-03-31 17:33:13] No GPU available.
+[2026-03-31 17:33:13] Build tree time: 6.394952774047852
+[2026-03-31 17:33:16] Compute tree time: 9.403385162353516
+[2026-03-31 17:33:39] Start top-down tree, 22 features
+[2026-03-31 17:33:39] No GPU available.
+[2026-03-31 17:33:40] End level 1 - 0.27748894691467285 seconds, 84 predictions
+[2026-03-31 17:33:40] No GPU available.
+[2026-03-31 17:33:40] End level 2 - 0.4285740852355957 seconds, 160 predictions
+[2026-03-31 17:33:40] No GPU available.
+[2026-03-31 17:33:40] End level 3 - 0.4267740249633789 seconds, 168 predictions
+[2026-03-31 17:33:40] No GPU available.
+[2026-03-31 17:33:41] End level 4 - 0.4069178104400635 seconds, 160 predictions
+[2026-03-31 17:33:41] No GPU available.
+[2026-03-31 17:33:41] End level 5 - 0.3885319232940674 seconds, 152 predictions
+[2026-03-31 17:33:41] No GPU available.
+[2026-03-31 17:33:42] End level 6 - 0.36898088455200195 seconds, 152 predictions
+[2026-03-31 17:33:42] No GPU available.
+[2026-03-31 17:33:42] End level 7 - 0.4677257537841797 seconds, 200 predictions
+[2026-03-31 17:33:42] No GPU available.
+[2026-03-31 17:33:42] End level 8 - 0.4193878173828125 seconds, 184 predictions
+[2026-03-31 17:33:42] No GPU available.
+[2026-03-31 17:33:43] End level 9 - 0.38343191146850586 seconds, 168 predictions
+[2026-03-31 17:33:43] No GPU available.
+[2026-03-31 17:33:43] End level 10 - 0.3448359966278076 seconds, 152 predictions
+[2026-03-31 17:33:43] No GPU available.
+[2026-03-31 17:33:44] End level 11 - 0.32581186294555664 seconds, 144 predictions
+[2026-03-31 17:33:44] No GPU available.
+[2026-03-31 17:33:44] End level 12 - 0.2897498607635498 seconds, 128 predictions
+[2026-03-31 17:33:44] No GPU available.
+[2026-03-31 17:33:44] End level 13 - 0.25338077545166016 seconds, 112 predictions
+[2026-03-31 17:33:44] No GPU available.
+[2026-03-31 17:33:44] End level 14 - 0.2748570442199707 seconds, 96 predictions
+[2026-03-31 17:33:44] No GPU available.
+[2026-03-31 17:33:45] End level 15 - 0.18256211280822754 seconds, 80 predictions
+[2026-03-31 17:33:45] No GPU available.
+[2026-03-31 17:33:45] End level 16 - 0.14730596542358398 seconds, 64 predictions
+[2026-03-31 17:33:45] No GPU available.
+[2026-03-31 17:33:45] End level 17 - 0.11528587341308594 seconds, 48 predictions
+[2026-03-31 17:33:45] No GPU available.
+[2026-03-31 17:33:45] End level 18 - 0.14006304740905762 seconds, 64 predictions
+[2026-03-31 17:33:45] No GPU available.
+[2026-03-31 17:33:45] End level 19 - 0.10533666610717773 seconds, 48 predictions
+[2026-03-31 17:33:45] No GPU available.
+[2026-03-31 17:33:45] End level 20 - 0.07023406028747559 seconds, 32 predictions
+[2026-03-31 17:33:45] No GPU available.
+[2026-03-31 17:33:45] End level 21 - 0.035041093826293945 seconds, 16 predictions
+[2026-03-31 17:33:45] No GPU available.
+[2026-03-31 17:33:45] Build tree time: 5.86500096321106
+[2026-03-31 17:33:48] Compute tree time: 8.880311250686646
+[2026-03-31 17:34:25] Start top-down tree, 22 features
+[2026-03-31 17:34:25] No GPU available.
+[2026-03-31 17:34:25] End level 2 - 0.43796730041503906 seconds, 160 predictions
+[2026-03-31 17:34:25] No GPU available.
+[2026-03-31 17:34:25] End level 3 - 0.5150389671325684 seconds, 200 predictions
+[2026-03-31 17:34:25] No GPU available.
+[2026-03-31 17:34:26] End level 4 - 0.5202031135559082 seconds, 216 predictions
+[2026-03-31 17:34:26] No GPU available.
+[2026-03-31 17:34:27] End level 5 - 0.5972390174865723 seconds, 256 predictions
+[2026-03-31 17:34:27] No GPU available.
+[2026-03-31 17:34:27] End level 6 - 0.5530529022216797 seconds, 240 predictions
+[2026-03-31 17:34:27] No GPU available.
+[2026-03-31 17:34:28] End level 7 - 0.5106208324432373 seconds, 224 predictions
+[2026-03-31 17:34:28] No GPU available.
+[2026-03-31 17:34:28] End level 8 - 0.46993207931518555 seconds, 208 predictions
+[2026-03-31 17:34:28] No GPU available.
+[2026-03-31 17:34:29] End level 9 - 0.46637701988220215 seconds, 208 predictions
+[2026-03-31 17:34:29] No GPU available.
+[2026-03-31 17:34:29] End level 10 - 0.4279599189758301 seconds, 192 predictions
+[2026-03-31 17:34:29] No GPU available.
+[2026-03-31 17:34:29] End level 11 - 0.3854649066925049 seconds, 176 predictions
+[2026-03-31 17:34:29] No GPU available.
+[2026-03-31 17:34:30] End level 12 - 0.3515048027038574 seconds, 160 predictions
+[2026-03-31 17:34:30] No GPU available.
+[2026-03-31 17:34:30] End level 13 - 0.31186699867248535 seconds, 144 predictions
+[2026-03-31 17:34:30] No GPU available.
+[2026-03-31 17:34:30] End level 14 - 0.28815531730651855 seconds, 128 predictions
+[2026-03-31 17:34:30] No GPU available.
+[2026-03-31 17:34:31] End level 15 - 0.2420330047607422 seconds, 112 predictions
+[2026-03-31 17:34:31] No GPU available.
+[2026-03-31 17:34:31] End level 16 - 0.2095799446105957 seconds, 96 predictions
+[2026-03-31 17:34:31] No GPU available.
+[2026-03-31 17:34:31] End level 17 - 0.1727750301361084 seconds, 80 predictions
+[2026-03-31 17:34:31] No GPU available.
+[2026-03-31 17:34:31] End level 18 - 0.1380939483642578 seconds, 64 predictions
+[2026-03-31 17:34:31] No GPU available.
+[2026-03-31 17:34:31] End level 19 - 0.10553789138793945 seconds, 48 predictions
+[2026-03-31 17:34:31] No GPU available.
+[2026-03-31 17:34:31] End level 20 - 0.07059693336486816 seconds, 32 predictions
+[2026-03-31 17:34:31] No GPU available.
+[2026-03-31 17:34:31] End level 21 - 0.0351710319519043 seconds, 16 predictions
+[2026-03-31 17:34:31] No GPU available.
+[2026-03-31 17:34:31] Build tree time: 6.822726249694824
+[2026-03-31 17:34:34] Compute tree time: 9.81840705871582
+[2026-03-31 17:35:02] Start top-down tree, 22 features
+[2026-03-31 17:35:02] No GPU available.
+[2026-03-31 17:35:02] End level 1 - 0.27228283882141113 seconds, 84 predictions
+[2026-03-31 17:35:02] No GPU available.
+[2026-03-31 17:35:02] End level 2 - 0.42500996589660645 seconds, 160 predictions
+[2026-03-31 17:35:02] No GPU available.
+[2026-03-31 17:35:03] End level 3 - 0.40421414375305176 seconds, 152 predictions
+[2026-03-31 17:35:03] No GPU available.
+[2026-03-31 17:35:03] End level 4 - 0.38884401321411133 seconds, 152 predictions
+[2026-03-31 17:35:03] No GPU available.
+[2026-03-31 17:35:04] End level 5 - 0.3719460964202881 seconds, 144 predictions
+[2026-03-31 17:35:04] No GPU available.
+[2026-03-31 17:35:04] End level 6 - 0.38515520095825195 seconds, 144 predictions
+[2026-03-31 17:35:04] No GPU available.
+[2026-03-31 17:35:04] End level 7 - 0.3304321765899658 seconds, 128 predictions
+[2026-03-31 17:35:04] No GPU available.
+[2026-03-31 17:35:05] End level 8 - 0.2918698787689209 seconds, 112 predictions
+[2026-03-31 17:35:05] No GPU available.
+[2026-03-31 17:35:05] End level 9 - 0.48916125297546387 seconds, 208 predictions
+[2026-03-31 17:35:05] No GPU available.
+[2026-03-31 17:35:05] End level 10 - 0.44682788848876953 seconds, 192 predictions
+[2026-03-31 17:35:05] No GPU available.
+[2026-03-31 17:35:06] End level 11 - 0.40850305557250977 seconds, 176 predictions
+[2026-03-31 17:35:06] No GPU available.
+[2026-03-31 17:35:06] End level 12 - 0.3627028465270996 seconds, 160 predictions
+[2026-03-31 17:35:06] No GPU available.
+[2026-03-31 17:35:07] End level 13 - 0.3243560791015625 seconds, 144 predictions
+[2026-03-31 17:35:07] No GPU available.
+[2026-03-31 17:35:07] End level 14 - 0.29367995262145996 seconds, 128 predictions
+[2026-03-31 17:35:07] No GPU available.
+[2026-03-31 17:35:07] End level 15 - 0.3421330451965332 seconds, 112 predictions
+[2026-03-31 17:35:07] No GPU available.
+[2026-03-31 17:35:08] End level 16 - 0.2821319103240967 seconds, 96 predictions
+[2026-03-31 17:35:08] No GPU available.
+[2026-03-31 17:35:08] End level 17 - 0.17958784103393555 seconds, 80 predictions
+[2026-03-31 17:35:08] No GPU available.
+[2026-03-31 17:35:08] End level 18 - 0.1405019760131836 seconds, 64 predictions
+[2026-03-31 17:35:08] No GPU available.
+[2026-03-31 17:35:08] End level 19 - 0.11557292938232422 seconds, 48 predictions
+[2026-03-31 17:35:08] No GPU available.
+[2026-03-31 17:35:08] End level 20 - 0.07790493965148926 seconds, 32 predictions
+[2026-03-31 17:35:08] No GPU available.
+[2026-03-31 17:35:08] End level 21 - 0.03873586654663086 seconds, 16 predictions
+[2026-03-31 17:35:08] No GPU available.
+[2026-03-31 17:35:08] Build tree time: 6.382885932922363
+[2026-03-31 17:35:11] Compute tree time: 9.637070178985596
+[2026-03-31 17:36:42] Start top-down tree, 22 features
+[2026-03-31 17:36:42] No GPU available.
+[2026-03-31 17:36:42] End level 2 - 0.43961191177368164 seconds, 160 predictions
+[2026-03-31 17:36:42] No GPU available.
+[2026-03-31 17:36:43] End level 3 - 0.7144827842712402 seconds, 280 predictions
+[2026-03-31 17:36:43] No GPU available.
+[2026-03-31 17:36:44] End level 4 - 0.6511940956115723 seconds, 264 predictions
+[2026-03-31 17:36:44] No GPU available.
+[2026-03-31 17:36:44] End level 5 - 0.6336970329284668 seconds, 264 predictions
+[2026-03-31 17:36:44] No GPU available.
+[2026-03-31 17:36:45] End level 6 - 0.5826990604400635 seconds, 248 predictions
+[2026-03-31 17:36:45] No GPU available.
+[2026-03-31 17:36:45] End level 7 - 0.5298402309417725 seconds, 232 predictions
+[2026-03-31 17:36:45] No GPU available.
+[2026-03-31 17:36:46] End level 8 - 0.4925661087036133 seconds, 216 predictions
+[2026-03-31 17:36:46] No GPU available.
+[2026-03-31 17:36:46] End level 9 - 0.45294618606567383 seconds, 200 predictions
+[2026-03-31 17:36:46] No GPU available.
+[2026-03-31 17:36:47] End level 10 - 0.4111011028289795 seconds, 184 predictions
+[2026-03-31 17:36:47] No GPU available.
+[2026-03-31 17:36:47] End level 11 - 0.3692460060119629 seconds, 168 predictions
+[2026-03-31 17:36:47] No GPU available.
+[2026-03-31 17:36:47] End level 12 - 0.3299520015716553 seconds, 152 predictions
+[2026-03-31 17:36:47] No GPU available.
+[2026-03-31 17:36:48] End level 13 - 0.2951512336730957 seconds, 136 predictions
+[2026-03-31 17:36:48] No GPU available.
+[2026-03-31 17:36:48] End level 14 - 0.2584688663482666 seconds, 120 predictions
+[2026-03-31 17:36:48] No GPU available.
+[2026-03-31 17:36:48] End level 15 - 0.22417116165161133 seconds, 104 predictions
+[2026-03-31 17:36:48] No GPU available.
+[2026-03-31 17:36:48] End level 16 - 0.19078612327575684 seconds, 88 predictions
+[2026-03-31 17:36:48] No GPU available.
+[2026-03-31 17:36:49] End level 17 - 0.156386137008667 seconds, 72 predictions
+[2026-03-31 17:36:49] No GPU available.
+[2026-03-31 17:36:49] End level 18 - 0.12213397026062012 seconds, 56 predictions
+[2026-03-31 17:36:49] No GPU available.
+[2026-03-31 17:36:49] End level 19 - 0.08776211738586426 seconds, 40 predictions
+[2026-03-31 17:36:49] No GPU available.
+[2026-03-31 17:36:49] End level 20 - 0.06903576850891113 seconds, 32 predictions
+[2026-03-31 17:36:49] No GPU available.
+[2026-03-31 17:36:49] End level 21 - 0.03461289405822754 seconds, 16 predictions
+[2026-03-31 17:36:49] No GPU available.
+[2026-03-31 17:36:49] Build tree time: 7.057896137237549
+[2026-03-31 17:36:52] Compute tree time: 9.993293046951294
+[2026-03-31 17:38:11] Start top-down tree, 22 features
+[2026-03-31 17:38:11] No GPU available.
+[2026-03-31 17:38:11] End level 1 - 0.2828350067138672 seconds, 84 predictions
+[2026-03-31 17:38:11] No GPU available.
+[2026-03-31 17:38:11] End level 2 - 0.42937183380126953 seconds, 160 predictions
+[2026-03-31 17:38:11] No GPU available.
+[2026-03-31 17:38:12] End level 3 - 0.41990089416503906 seconds, 168 predictions
+[2026-03-31 17:38:12] No GPU available.
+[2026-03-31 17:38:12] End level 4 - 0.4334571361541748 seconds, 176 predictions
+[2026-03-31 17:38:12] No GPU available.
+[2026-03-31 17:38:13] End level 5 - 0.4360976219177246 seconds, 176 predictions
+[2026-03-31 17:38:13] No GPU available.
+[2026-03-31 17:38:13] End level 6 - 0.46370697021484375 seconds, 200 predictions
+[2026-03-31 17:38:13] No GPU available.
+[2026-03-31 17:38:14] End level 7 - 0.4749929904937744 seconds, 208 predictions
+[2026-03-31 17:38:14] No GPU available.
+[2026-03-31 17:38:14] End level 8 - 0.4378819465637207 seconds, 192 predictions
+[2026-03-31 17:38:14] No GPU available.
+[2026-03-31 17:38:14] End level 9 - 0.3957822322845459 seconds, 176 predictions
+[2026-03-31 17:38:14] No GPU available.
+[2026-03-31 17:38:15] End level 10 - 0.38922977447509766 seconds, 176 predictions
+[2026-03-31 17:38:15] No GPU available.
+[2026-03-31 17:38:15] End level 11 - 0.3549308776855469 seconds, 160 predictions
+[2026-03-31 17:38:15] No GPU available.
+[2026-03-31 17:38:16] End level 12 - 0.3181180953979492 seconds, 144 predictions
+[2026-03-31 17:38:16] No GPU available.
+[2026-03-31 17:38:16] End level 13 - 0.2837529182434082 seconds, 128 predictions
+[2026-03-31 17:38:16] No GPU available.
+[2026-03-31 17:38:16] End level 14 - 0.24871611595153809 seconds, 112 predictions
+[2026-03-31 17:38:16] No GPU available.
+[2026-03-31 17:38:16] End level 15 - 0.22689294815063477 seconds, 104 predictions
+[2026-03-31 17:38:16] No GPU available.
+[2026-03-31 17:38:17] End level 16 - 0.20813798904418945 seconds, 96 predictions
+[2026-03-31 17:38:17] No GPU available.
+[2026-03-31 17:38:17] End level 17 - 0.1750328540802002 seconds, 80 predictions
+[2026-03-31 17:38:17] No GPU available.
+[2026-03-31 17:38:17] End level 18 - 0.13916420936584473 seconds, 64 predictions
+[2026-03-31 17:38:17] No GPU available.
+[2026-03-31 17:38:17] End level 19 - 0.10303902626037598 seconds, 48 predictions
+[2026-03-31 17:38:17] No GPU available.
+[2026-03-31 17:38:17] End level 20 - 0.0693359375 seconds, 32 predictions
+[2026-03-31 17:38:17] No GPU available.
+[2026-03-31 17:38:17] End level 21 - 0.03461599349975586 seconds, 16 predictions
+[2026-03-31 17:38:17] No GPU available.
+[2026-03-31 17:38:17] Build tree time: 6.337773084640503
+[2026-03-31 17:38:20] Compute tree time: 9.520702123641968
+[2026-03-31 17:38:49] Start top-down tree, 22 features
+[2026-03-31 17:38:49] No GPU available.
+[2026-03-31 17:38:49] End level 2 - 0.43610095977783203 seconds, 160 predictions
+[2026-03-31 17:38:49] No GPU available.
+[2026-03-31 17:38:50] End level 3 - 0.4209446907043457 seconds, 160 predictions
+[2026-03-31 17:38:50] No GPU available.
+[2026-03-31 17:38:51] End level 4 - 0.7021429538726807 seconds, 288 predictions
+[2026-03-31 17:38:51] No GPU available.
+[2026-03-31 17:38:51] End level 5 - 0.6956758499145508 seconds, 272 predictions
+[2026-03-31 17:38:51] No GPU available.
+[2026-03-31 17:38:52] End level 6 - 0.6079616546630859 seconds, 256 predictions
+[2026-03-31 17:38:52] No GPU available.
+[2026-03-31 17:38:53] End level 7 - 0.6523199081420898 seconds, 240 predictions
+[2026-03-31 17:38:53] No GPU available.
+[2026-03-31 17:38:53] End level 8 - 0.605262041091919 seconds, 224 predictions
+[2026-03-31 17:38:53] No GPU available.
+[2026-03-31 17:38:54] End level 9 - 0.47116804122924805 seconds, 208 predictions
+[2026-03-31 17:38:54] No GPU available.
+[2026-03-31 17:38:54] End level 10 - 0.4217369556427002 seconds, 192 predictions
+[2026-03-31 17:38:54] No GPU available.
+[2026-03-31 17:38:54] End level 11 - 0.3833658695220947 seconds, 176 predictions
+[2026-03-31 17:38:54] No GPU available.
+[2026-03-31 17:38:55] End level 12 - 0.35024476051330566 seconds, 160 predictions
+[2026-03-31 17:38:55] No GPU available.
+[2026-03-31 17:38:55] End level 13 - 0.33792924880981445 seconds, 144 predictions
+[2026-03-31 17:38:55] No GPU available.
+[2026-03-31 17:38:55] End level 14 - 0.2788872718811035 seconds, 128 predictions
+[2026-03-31 17:38:55] No GPU available.
+[2026-03-31 17:38:56] End level 15 - 0.24469304084777832 seconds, 112 predictions
+[2026-03-31 17:38:56] No GPU available.
+[2026-03-31 17:38:56] End level 16 - 0.20772027969360352 seconds, 96 predictions
+[2026-03-31 17:38:56] No GPU available.
+[2026-03-31 17:38:56] End level 17 - 0.17320513725280762 seconds, 80 predictions
+[2026-03-31 17:38:56] No GPU available.
+[2026-03-31 17:38:56] End level 18 - 0.138397216796875 seconds, 64 predictions
+[2026-03-31 17:38:56] No GPU available.
+[2026-03-31 17:38:56] End level 19 - 0.10520696640014648 seconds, 48 predictions
+[2026-03-31 17:38:56] No GPU available.
+[2026-03-31 17:38:56] End level 20 - 0.06957173347473145 seconds, 32 predictions
+[2026-03-31 17:38:56] No GPU available.
+[2026-03-31 17:38:56] End level 21 - 0.03532695770263672 seconds, 16 predictions
+[2026-03-31 17:38:56] No GPU available.
+[2026-03-31 17:38:56] Build tree time: 7.351298093795776
+[2026-03-31 17:38:59] Compute tree time: 10.336100101470947
+[2026-03-31 17:40:42] Start top-down tree, 22 features
+[2026-03-31 17:40:42] No GPU available.
+[2026-03-31 17:40:42] End level 2 - 0.4376680850982666 seconds, 160 predictions
+[2026-03-31 17:40:42] No GPU available.
+[2026-03-31 17:40:43] End level 3 - 0.6194329261779785 seconds, 232 predictions
+[2026-03-31 17:40:43] No GPU available.
+[2026-03-31 17:40:44] End level 4 - 0.6673080921173096 seconds, 272 predictions
+[2026-03-31 17:40:44] No GPU available.
+[2026-03-31 17:40:44] End level 5 - 0.6045620441436768 seconds, 256 predictions
+[2026-03-31 17:40:44] No GPU available.
+[2026-03-31 17:40:45] End level 6 - 0.5487732887268066 seconds, 240 predictions
+[2026-03-31 17:40:45] No GPU available.
+[2026-03-31 17:40:45] End level 7 - 0.513185977935791 seconds, 224 predictions
+[2026-03-31 17:40:45] No GPU available.
+[2026-03-31 17:40:46] End level 8 - 0.488483190536499 seconds, 208 predictions
+[2026-03-31 17:40:46] No GPU available.
+[2026-03-31 17:40:46] End level 9 - 0.42795586585998535 seconds, 192 predictions
+[2026-03-31 17:40:46] No GPU available.
+[2026-03-31 17:40:46] End level 10 - 0.3893699645996094 seconds, 176 predictions
+[2026-03-31 17:40:46] No GPU available.
+[2026-03-31 17:40:47] End level 11 - 0.356353759765625 seconds, 160 predictions
+[2026-03-31 17:40:47] No GPU available.
+[2026-03-31 17:40:47] End level 12 - 0.3184518814086914 seconds, 144 predictions
+[2026-03-31 17:40:47] No GPU available.
+[2026-03-31 17:40:47] End level 13 - 0.28441596031188965 seconds, 128 predictions
+[2026-03-31 17:40:47] No GPU available.
+[2026-03-31 17:40:48] End level 14 - 0.2492079734802246 seconds, 112 predictions
+[2026-03-31 17:40:48] No GPU available.
+[2026-03-31 17:40:48] End level 15 - 0.23229384422302246 seconds, 104 predictions
+[2026-03-31 17:40:48] No GPU available.
+[2026-03-31 17:40:48] End level 16 - 0.2092130184173584 seconds, 96 predictions
+[2026-03-31 17:40:48] No GPU available.
+[2026-03-31 17:40:48] End level 17 - 0.1796262264251709 seconds, 80 predictions
+[2026-03-31 17:40:48] No GPU available.
+[2026-03-31 17:40:48] End level 18 - 0.1407010555267334 seconds, 64 predictions
+[2026-03-31 17:40:48] No GPU available.
+[2026-03-31 17:40:49] End level 19 - 0.1058349609375 seconds, 48 predictions
+[2026-03-31 17:40:49] No GPU available.
+[2026-03-31 17:40:49] End level 20 - 0.07096314430236816 seconds, 32 predictions
+[2026-03-31 17:40:49] No GPU available.
+[2026-03-31 17:40:49] End level 21 - 0.034767866134643555 seconds, 16 predictions
+[2026-03-31 17:40:49] No GPU available.
+[2026-03-31 17:40:49] Build tree time: 6.891130208969116
+[2026-03-31 17:40:52] Compute tree time: 10.046511888504028

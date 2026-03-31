@@ -1,4 +1,5 @@
-
+import sys
+from pathlib import Path
 import json
 import numpy as np
 import pandas as pd
@@ -6,21 +7,46 @@ import shap
 import transformers
 from transformers import BertForSequenceClassification, BertTokenizer
 
-from partitions.balanced_partition import BalancedTextMasker
-from partitions.random_partition import RandomTextMasker
 import aopc
 
-add_to_existing = True
+# Change this per run to avoid overriding old results.
+EXPERIMENT_VERSION = "v1"
+ADD_TO_EXISTING = False
+
+sample_size = 10
+
+THIS_FILE = Path(__file__).resolve()
+
+# Make imports robust to different launch directories.
+for parent in THIS_FILE.parents:
+    if (parent / "src").exists() and str(parent) not in sys.path:
+        sys.path.insert(0, str(parent))
+    if parent.name == "utils" and str(parent) not in sys.path:
+        sys.path.insert(0, str(parent))
+
+try:
+    from src.utils.partitions.balanced_partition import BalancedTextMasker
+    from src.utils.partitions.random_partition import RandomTextMasker
+    from src.utils.partitions.intercation_partition import InteractionTextMasker
+except ModuleNotFoundError:
+    from partitions.balanced_partition import BalancedTextMasker
+    from partitions.random_partition import RandomTextMasker
+    from partitions.intercation_partition import InteractionTextMasker
 
 
 
-root_dir = "" #"../../"
+
+repo_root = next((p for p in THIS_FILE.parents if (p / "src").exists()), THIS_FILE.parents[0])
+root_dir = str(repo_root) + "/"
+
 sst_sub_file = f"{root_dir}datasets/sst2_sampled_with_tokens.csv"
 df_sst = pd.read_csv(sst_sub_file)
 df_sst = df_sst[df_sst["num_tokens"] >= 20]
 
-if add_to_existing:
-    with open(f"{root_dir}results/partitions_aopc.json", "r") as f:
+results_file = f"{root_dir}results/partitions_aopc_{EXPERIMENT_VERSION}.json"
+
+if ADD_TO_EXISTING:
+    with open(results_file, "r") as f:
         all_results = json.load(f)
 else:
     all_results = []
@@ -57,10 +83,14 @@ def get_fi(explainer, text, model, tokenizer):
     model = model.to(device2)
     return fi, predicted_class, aopc_score, confidence
 
-sample_size = 100
+PARTITIONS = {
+    "default": lambda: None,
+    "balanced": lambda: BalancedTextMasker(tokenizer),
+    "random": lambda: RandomTextMasker(tokenizer),
+    "interaction": lambda: InteractionTextMasker(tokenizer, model, win_size=1, max_length=250),
+}
 
-aopc_default = []
-aopc_balanced = []
+aopc_by_partition = {k: [] for k in PARTITIONS.keys()}
 
 ind = 0
 
@@ -70,52 +100,43 @@ for i, row in df_sst.iterrows():
 
     sentence = row["sentence"]
 
-    if not add_to_existing:
-        # Default explainer
-        explainer = shap.Explainer(pred)
-        fi, predicted_class, aopc_score, confidence = get_fi(explainer, sentence, model, tokenizer)
-        aopc_default.append(aopc_score)
+    # Ensure base record exists.
+    if ADD_TO_EXISTING:
+        results = all_results[ind]
+    else:
+        results = {
+            "text": sentence,
+            "num_tokens": int(row["num_tokens"]),
+        }
 
-    # Balanced explainer
-    #masker = BalancedTextMasker(tokenizer)
-    masker = RandomTextMasker(tokenizer)
-    explainer2 = shap.Explainer(pred, masker)
-    fi2, predicted_class2, aopc_score2, confidence2 = get_fi(explainer2, sentence, model, tokenizer)
-    aopc_balanced.append(aopc_score2)
+    for pname, masker_factory in PARTITIONS.items():
+        if ADD_TO_EXISTING and pname in results:
+            continue
+
+        masker = masker_factory()
+        explainer = shap.Explainer(pred) if masker is None else shap.Explainer(pred, masker)
+        fi, predicted_class, aopc_score, confidence = get_fi(explainer, sentence, model, tokenizer)
+        aopc_by_partition[pname].append(aopc_score)
+
+        results[pname] = {
+            "fi": fi,
+            "aopc": aopc_score,
+            "predicted_class": int(predicted_class),
+            "confidence": float(confidence),
+        }
 
     sample_size -= 1
 
-    
-
-    if add_to_existing:
-        all_results[ind]["random"] = {
-                        "fi": fi2,
-                        "aopc": aopc_score2
-                    }
-        
-    else:
-        results = { "text": sentence,
-                    "num_tokens": row["num_tokens"],
-                    "confidence": float(confidence),
-                    "predicted_class": int(predicted_class),
-                    "default": {
-                        "fi": fi,
-                        "aopc": aopc_score
-                    },
-                    "balanced": {
-                        "fi": fi2,
-                        "aopc": aopc_score2}
-                    }
-        
+    if not ADD_TO_EXISTING:
         all_results.append(results)
 
     ind += 1
                     
 
 # Save results
-file = f"{root_dir}results/partitions_aopc.json"
-with open(file, "w") as f:
+with open(results_file, "w") as f:
     json.dump(all_results, f, indent=2)
 
-print("Default AOPC: ", np.mean(np.array(aopc_default)))
-print("Balanced partition AOPC: ", np.mean(np.array(aopc_balanced)))
+for pname, scores in aopc_by_partition.items():
+    if len(scores) > 0:
+        print(f"{pname} AOPC: {float(np.mean(np.array(scores)))}")
